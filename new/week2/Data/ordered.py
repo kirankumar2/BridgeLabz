@@ -51,6 +51,26 @@ class LinkedList :
                     tempnode = tempnode.next
                 prevnode.next = newnode
 
+    def search1(self, data) :  # Seaching for the node to find string equal or not
+        self.disply()
+        tempnode = self.head
+        print(data)
+        while tempnode is not None :
+            if tempnode.data == data :
+                return True
+            tempnode = tempnode.next
+        return False
+
+    def delete1(self, data) :  # delete node in a list
+        prvnode = tempnode = self.head
+        if tempnode.data == data :
+            self.head = tempnode.next
+        else :
+            while tempnode.data != data :
+                prvnode = tempnode
+                tempnode = tempnode.next
+            prvnode.next = tempnode.next
+
 
 if __name__ == "__main__" :
     list = LinkedList()
@@ -59,11 +79,11 @@ for item in word :
     list.addnode(item)
 print("Current list is :")
 list.disply()
-val = raw_input("\nEnter a word to search:\n")
-if list.search(val) :
+val = input("\nEnter num to search:\n")
+if list.search1(val) :
     print("Element found and deleting from the file\n")
     word.remove(val)
-    list.delete(val)
+    list.delete1(val)
     write(word, 'data.txt')
     print(word)
 else :
